@@ -18,5 +18,7 @@
   "ds_tacz_compat.configuration.gunPitchClamp": "Pitch Clamp",
   "ds_tacz_compat.configuration.gunPitchClamp.tooltip": "Maximum downward pitch in degrees below horizontal. Prevents the gun aiming at dragon body.",
   "ds_tacz_compat.configuration.tracerVisible": "Dragon Player Tracer Visibility",
-  "ds_tacz_compat.configuration.tracerVisible.tooltip": "Show bullet tracers for dragon players."
+  "ds_tacz_compat.configuration.tracerVisible.tooltip": "Show bullet tracers for dragon players.",
+  "ds_tacz_compat.configuration.hideRemoteTracer": "Hide Remote Dragon Tracers",
+  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "Hide bullet tracers from other dragon players, matching original TACZ behavior."
 }

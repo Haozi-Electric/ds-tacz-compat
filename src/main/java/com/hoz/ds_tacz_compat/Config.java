@@ -45,5 +45,10 @@ public class Config {
             .translation("ds_tacz_compat.configuration.tracerVisible")
             .define("tracerVisible", true);
 
+    public static final ModConfigSpec.BooleanValue HIDE_REMOTE_TRACER = BUILDER
+            .comment("Hide bullet tracers from other dragon players, matching original TACZ behavior.")
+            .translation("ds_tacz_compat.configuration.hideRemoteTracer")
+            .define("hideRemoteTracer", true);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 }

@@ -94,7 +94,7 @@ public abstract class DragonItemRenderLayerMixin {
 
         float floatAnim = (float) Math.sin((System.currentTimeMillis() % 4000) / 1000.0 * Math.PI * 2) * 0.06f;
         float height = animatable.getBbHeight() * animatable.getScale() + Config.GUN_HEIGHT_OFFSET.get().floatValue() + floatAnim;
-        GunRenderData.headGunY = height;
+        GunRenderData.setHeadGunY(player.getUUID(), height);
         float offsetX = Config.GUN_OFFSET_X.get().floatValue();
         float offsetZ = Config.GUN_OFFSET_Z.get().floatValue();
 
@@ -115,27 +115,34 @@ public abstract class DragonItemRenderLayerMixin {
             alpha = 1f - (float) Math.exp(-dt / tau);
         }
 
-        if (!GunRenderData.smoothingInitialized) {
-            GunRenderData.smoothedYaw = targetYaw;
-            GunRenderData.smoothedPitch = targetPitch;
-            GunRenderData.smoothingInitialized = true;
+        GunRenderData.SmoothState state = GunRenderData.smoothState(player.getUUID());
+        if (!state.initialized) {
+            state.yaw = targetYaw;
+            state.pitch = targetPitch;
+            state.initialized = true;
         } else {
-            float yawDiff = targetYaw - GunRenderData.smoothedYaw;
+            float yawDiff = targetYaw - state.yaw;
             if (yawDiff > 180) yawDiff -= 360;
             if (yawDiff < -180) yawDiff += 360;
-            GunRenderData.smoothedYaw += yawDiff * alpha;
-            GunRenderData.smoothedPitch += (targetPitch - GunRenderData.smoothedPitch) * alpha;
+            state.yaw += yawDiff * alpha;
+            state.pitch += (targetPitch - state.pitch) * alpha;
         }
 
         float pitchClamp = Config.GUN_PITCH_CLAMP.get().floatValue();
-        if (GunRenderData.smoothedPitch > pitchClamp) {
-            GunRenderData.smoothedPitch = pitchClamp;
+        if (state.pitch > pitchClamp) {
+            state.pitch = pitchClamp;
         }
 
         // Level 2: camera-oriented rendering
-        poseStack.mulPose(Axis.YP.rotationDegrees(180 - GunRenderData.smoothedYaw + bodyYaw));
-        poseStack.mulPose(Axis.XP.rotationDegrees(-GunRenderData.smoothedPitch));
+        poseStack.mulPose(Axis.YP.rotationDegrees(180 - state.yaw + bodyYaw));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-state.pitch));
         poseStack.scale(0.8f, 0.8f, 0.8f);
+
+        // Miniguns have [90,0,0] on their thirdperson_hand bone; pre-cancel it
+        IGun iGun = (IGun) stack.getItem();
+        if (iGun.getGunId(stack).getPath().contains("minigun")) {
+            poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+        }
 
         try {
             MUZZLE_FLASH_START_MARK.setBoolean(null, true);

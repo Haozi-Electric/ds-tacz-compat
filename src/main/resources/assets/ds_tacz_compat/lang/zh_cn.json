@@ -18,5 +18,7 @@
   "ds_tacz_compat.configuration.gunPitchClamp": "俯角限位",
   "ds_tacz_compat.configuration.gunPitchClamp.tooltip": "枪口最大下俯角度，单位为度（水平面以下）。防止枪口指向自己的龙身。",
   "ds_tacz_compat.configuration.tracerVisible": "龙玩家曳光弹可见性",
-  "ds_tacz_compat.configuration.tracerVisible.tooltip": "显示龙玩家的子弹曳光轨迹。"
+  "ds_tacz_compat.configuration.tracerVisible.tooltip": "显示龙玩家的子弹曳光轨迹。",
+  "ds_tacz_compat.configuration.hideRemoteTracer": "隐藏远程龙玩家曳光弹",
+  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "隐藏其他龙玩家的子弹曳光弹，与原版TACZ行为一致。"
 }

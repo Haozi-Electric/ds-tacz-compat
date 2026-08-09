@@ -26,17 +26,17 @@ public class EntityBulletRendererMixin {
         if (Config.HIDE_THIRD_PERSON_GUNS.get()) {
             return;
         }
-        if (Config.TRACER_VISIBLE.get()) {
-            return;
-        }
-        if (Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
+
+        Entity shooter = bullet.getOwner();
+        if (!(shooter instanceof Player player) || !DragonStateProvider.isDragon(player)) {
             return;
         }
 
-        Entity shooter = bullet.getOwner();
-        if (shooter instanceof Player player
-                && player == Minecraft.getInstance().player
-                && DragonStateProvider.isDragon(player)) {
+        if (player != Minecraft.getInstance().player) {
+            if (Config.HIDE_REMOTE_TRACER.get()) {
+                ci.cancel();
+            }
+        } else if (!Config.TRACER_VISIBLE.get()) {
             ci.cancel();
         }
     }
@@ -67,7 +67,7 @@ public class EntityBulletRendererMixin {
             return;
         }
 
-        float shiftY = GunRenderData.headGunY - player.getEyeHeight() + 0.3f;
+        float shiftY = GunRenderData.getHeadGunY(player.getUUID()) - player.getEyeHeight() + 0.3f;
 
         // Position offsets in body-aligned frame (matches gun rendering Level 1)
         float bodyYaw = (float) MovementData.getData(player).bodyYaw;
