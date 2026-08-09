@@ -1,0 +1,22 @@
+{
+  "ds_tacz_compat.configuration.title": "TACZ DS Compat Config",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml": "TACZ DS Compat Config",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml.title": "TACZ DS Compat Config",
+
+  "ds_tacz_compat.configuration.hideFirstPersonArms": "Hide First-Person Arms",
+  "ds_tacz_compat.configuration.hideFirstPersonArms.tooltip": "When enabled, dragon arms will not render in first-person while holding TACZ guns.",
+  "ds_tacz_compat.configuration.hideThirdPersonGuns": "Hide Third-Person Guns",
+  "ds_tacz_compat.configuration.hideThirdPersonGuns.tooltip": "If true, hide third-person guns on dragons entirely. If false, render the gun floating above the dragon.",
+  "ds_tacz_compat.configuration.gunHeightOffset": "Gun Height Offset",
+  "ds_tacz_compat.configuration.gunHeightOffset.tooltip": "Height offset of the floating gun above the dragon's hitbox top, in blocks.",
+  "ds_tacz_compat.configuration.gunOffsetX": "Gun Left/Right Offset",
+  "ds_tacz_compat.configuration.gunOffsetX.tooltip": "Left/right offset of the floating gun, in blocks. Positive : left.",
+  "ds_tacz_compat.configuration.gunOffsetZ": "Gun Forward/Back Offset",
+  "ds_tacz_compat.configuration.gunOffsetZ.tooltip": "Forward/back offset of the floating gun, in blocks. Positive : front.",
+  "ds_tacz_compat.configuration.aimSmoothing": "Aim Smoothing",
+  "ds_tacz_compat.configuration.aimSmoothing.tooltip": "EMA smoothing time for the gun aim-follow animation, in seconds. Set 0 to instant.",
+  "ds_tacz_compat.configuration.gunPitchClamp": "Pitch Clamp",
+  "ds_tacz_compat.configuration.gunPitchClamp.tooltip": "Maximum downward pitch in degrees below horizontal. Prevents the gun aiming at dragon body.",
+  "ds_tacz_compat.configuration.tracerVisible": "Dragon Player Tracer Visibility",
+  "ds_tacz_compat.configuration.tracerVisible.tooltip": "Show bullet tracers for dragon players."
+}

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.hoz.ds_tacz_compat.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "ds_tacz_compat.refmap.json",
+  "client": [
+    "RenderHelperMixin",
+    "DragonItemRenderLayerMixin",
+    "DragonRendererMixin",
+    "EntityBulletRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

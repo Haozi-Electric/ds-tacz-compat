@@ -1,0 +1,43 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="ds_tacz_compat"
+version="1.0.0"
+displayName="DS TACZ Compat"
+authors="Hz, Deepseek"
+description='''
+A simple compatibility mod for Timeless and Classics Zero and Dragon Survival that makes dragon players hold guns more naturally.
+'''
+
+[[mixins]]
+config="ds_tacz_compat.mixins.json"
+
+[[dependencies.ds_tacz_compat]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.200,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.ds_tacz_compat]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.ds_tacz_compat]]
+    modId="tacz"
+    type="required"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.ds_tacz_compat]]
+    modId="dragonsurvival"
+    type="required"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

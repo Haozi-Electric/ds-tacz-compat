@@ -1,0 +1,22 @@
+{
+  "ds_tacz_compat.configuration.title": "TACZ DS Compat 配置",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml": "TACZ DS Compat 配置",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml.title": "TACZ DS Compat 配置",
+
+  "ds_tacz_compat.configuration.hideFirstPersonArms": "隐藏第一人称手臂",
+  "ds_tacz_compat.configuration.hideFirstPersonArms.tooltip": "开启后，龙玩家持TACZ枪械时将不渲染第一人称手臂。",
+  "ds_tacz_compat.configuration.hideThirdPersonGuns": "隐藏第三人称枪械",
+  "ds_tacz_compat.configuration.hideThirdPersonGuns.tooltip": "若开启，完全隐藏龙身上的第三人称枪械。若关闭，将枪械渲染在龙身上方。",
+  "ds_tacz_compat.configuration.gunHeightOffset": "枪械高度偏移",
+  "ds_tacz_compat.configuration.gunHeightOffset.tooltip": "浮空枪械在龙碰撞箱顶部上方的高度偏移，单位为方块。",
+  "ds_tacz_compat.configuration.gunOffsetX": "枪械左右偏移",
+  "ds_tacz_compat.configuration.gunOffsetX.tooltip": "浮空枪械的左右偏移，单位为方块。正值：左移。",
+  "ds_tacz_compat.configuration.gunOffsetZ": "枪械前后偏移",
+  "ds_tacz_compat.configuration.gunOffsetZ.tooltip": "浮空枪械的前后偏移，单位为方块。正值：前移。",
+  "ds_tacz_compat.configuration.aimSmoothing": "瞄准平滑",
+  "ds_tacz_compat.configuration.aimSmoothing.tooltip": "枪口跟随视角的EMA平滑时间，单位为秒。设置为0则完全同步。",
+  "ds_tacz_compat.configuration.gunPitchClamp": "俯角限位",
+  "ds_tacz_compat.configuration.gunPitchClamp.tooltip": "枪口最大下俯角度，单位为度（水平面以下）。防止枪口指向自己的龙身。",
+  "ds_tacz_compat.configuration.tracerVisible": "龙玩家曳光弹可见性",
+  "ds_tacz_compat.configuration.tracerVisible.tooltip": "显示龙玩家的子弹曳光轨迹。"
+}
