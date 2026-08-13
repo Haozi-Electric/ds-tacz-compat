@@ -9,6 +9,8 @@
   "ds_tacz_compat.configuration.hideThirdPersonGuns.tooltip": "若开启，完全隐藏龙身上的第三人称枪械。若关闭，将枪械渲染在龙身上方。",
   "ds_tacz_compat.configuration.gunHeightOffset": "枪械高度偏移",
   "ds_tacz_compat.configuration.gunHeightOffset.tooltip": "浮空枪械在龙碰撞箱顶部上方的高度偏移，单位为方块。",
+  "ds_tacz_compat.configuration.gunFloatSpeed": "枪械浮动速度",
+  "ds_tacz_compat.configuration.gunFloatSpeed.tooltip": "浮空枪械上下浮动的速度，单位为每秒完整浮动次数。设置为0使其停止浮动。数值越大越快。",
   "ds_tacz_compat.configuration.gunOffsetX": "枪械左右偏移",
   "ds_tacz_compat.configuration.gunOffsetX.tooltip": "浮空枪械的左右偏移，单位为方块。正值：左移。",
   "ds_tacz_compat.configuration.gunOffsetZ": "枪械前后偏移",

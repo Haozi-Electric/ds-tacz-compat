@@ -20,6 +20,11 @@ public class Config {
             .translation("ds_tacz_compat.configuration.gunHeightOffset")
             .defineInRange("gunHeightOffset", 1.0, -2.0, 5.0);
 
+    public static final ModConfigSpec.DoubleValue GUN_FLOAT_SPEED = BUILDER
+            .comment("Vertical bobbing speed of the floating gun, in full float cycles per second. 0 = no bobbing. Higher = faster.")
+            .translation("ds_tacz_compat.configuration.gunFloatSpeed")
+            .defineInRange("gunFloatSpeed", 1.0, 0.0, 5.0);
+
     public static final ModConfigSpec.DoubleValue GUN_OFFSET_X = BUILDER
             .comment("Left/right offset of the floating gun, in blocks. Positive = right.")
             .translation("ds_tacz_compat.configuration.gunOffsetX")

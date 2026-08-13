@@ -23,6 +23,9 @@ public class DragonRendererMixin {
                                                     VertexConsumer buffer, boolean isReRender,
                                                     float partialTick, int packedLight, int packedOverlay,
                                                     int colour, CallbackInfo ci) {
+        if (GunRenderData.worldRenderDepth <= 0) {
+            return;
+        }
         GunRenderData.worldMatrix = new Matrix4f(poseStack.last().pose());
     }
 }

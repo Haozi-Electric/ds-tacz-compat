@@ -9,6 +9,8 @@
   "ds_tacz_compat.configuration.hideThirdPersonGuns.tooltip": "If true, hide third-person guns on dragons entirely. If false, render the gun floating above the dragon.",
   "ds_tacz_compat.configuration.gunHeightOffset": "Gun Height Offset",
   "ds_tacz_compat.configuration.gunHeightOffset.tooltip": "Height offset of the floating gun above the dragon's hitbox top, in blocks.",
+  "ds_tacz_compat.configuration.gunFloatSpeed": "Gun Float Speed",
+  "ds_tacz_compat.configuration.gunFloatSpeed.tooltip": "Vertical bobbing speed of the floating gun, in full float cycles per second. Set 0 to stop. Higher = faster.",
   "ds_tacz_compat.configuration.gunOffsetX": "Gun Left/Right Offset",
   "ds_tacz_compat.configuration.gunOffsetX.tooltip": "Left/right offset of the floating gun, in blocks. Positive : left.",
   "ds_tacz_compat.configuration.gunOffsetZ": "Gun Forward/Back Offset",

@@ -48,6 +48,11 @@ public abstract class DragonItemRenderLayerMixin {
             return;
         }
 
+        if (GunRenderData.worldRenderDepth <= 0) {
+            ci.cancel();
+            return;
+        }
+
         Player player = animatable.getPlayer();
         if (player == null) {
             ci.cancel();
@@ -92,7 +97,14 @@ public abstract class DragonItemRenderLayerMixin {
             return;
         }
 
-        float floatAnim = (float) Math.sin((System.currentTimeMillis() % 4000) / 1000.0 * Math.PI * 2) * 0.06f;
+        double floatSpeed = Config.GUN_FLOAT_SPEED.get();
+        float floatAnim;
+        if (floatSpeed <= 0.0) {
+            floatAnim = 0.0f;
+        } else {
+            double floatPeriodMs = 1000.0 / floatSpeed;
+            floatAnim = (float) Math.sin((System.currentTimeMillis() % floatPeriodMs) / floatPeriodMs * Math.PI * 2) * 0.06f;
+        }
         float height = animatable.getBbHeight() * animatable.getScale() + Config.GUN_HEIGHT_OFFSET.get().floatValue() + floatAnim;
         GunRenderData.setHeadGunY(player.getUUID(), height);
         float offsetX = Config.GUN_OFFSET_X.get().floatValue();

@@ -4,11 +4,18 @@
   "package": "com.hoz.ds_tacz_compat.mixin",
   "compatibilityLevel": "JAVA_21",
   "refmap": "ds_tacz_compat.refmap.json",
+  "mixins": [
+    "LivingEntitySprintMixin",
+    "LivingEntityAimMixin"
+  ],
   "client": [
+    "LevelRendererMixin",
     "RenderHelperMixin",
     "DragonItemRenderLayerMixin",
     "DragonRendererMixin",
-    "EntityBulletRendererMixin"
+    "EntityBulletRendererMixin",
+    "LocalPlayerSprintMixin",
+    "AnimationStateMachineMixin"
   ],
   "injectors": {
     "defaultRequire": 1
