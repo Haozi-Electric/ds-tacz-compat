@@ -72,8 +72,12 @@ public class EntityBulletRendererMixin {
         // Position offsets in body-aligned frame (matches gun rendering Level 1)
         float bodyYaw = (float) MovementData.getData(player).bodyYaw;
         float yawRad = (float) Math.toRadians(bodyYaw);
-        float offsetX = Config.GUN_OFFSET_X.get().floatValue();
-        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue();
+        float offsetScale = 1.0f;
+        if (Config.GUN_OFFSET_SCALE_WITH_DRAGON.get()) {
+            offsetScale = (float) DragonStateProvider.getData(player).getVisualScale(player, partialTicks);
+        }
+        float offsetX = Config.GUN_OFFSET_X.get().floatValue() * offsetScale;
+        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue() * offsetScale;
         // YN(bodyYaw) maps body frame to camera space: R_Y(-bodyYaw)
         float cos = (float) Math.cos(yawRad);
         float sin = (float) Math.sin(yawRad);

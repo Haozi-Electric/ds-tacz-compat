@@ -25,6 +25,21 @@ public class Config {
             .translation("ds_tacz_compat.configuration.gunFloatSpeed")
             .defineInRange("gunFloatSpeed", 1.0, 0.0, 5.0);
 
+    public static final ModConfigSpec.DoubleValue GUN_BASE_SCALE = BUILDER
+            .comment("Base scale of the floating gun. 1.0 matches the item's original size.")
+            .translation("ds_tacz_compat.configuration.gunBaseScale")
+            .defineInRange("gunBaseScale", 0.8, 0.1, 5.0);
+
+    public static final ModConfigSpec.BooleanValue GUN_SCALE_WITH_DRAGON = BUILDER
+            .comment("Scale the floating gun with the dragon's size, matching DragonSurvival's third-person item behavior.")
+            .translation("ds_tacz_compat.configuration.gunScaleWithDragon")
+            .define("gunScaleWithDragon", true);
+
+    public static final ModConfigSpec.BooleanValue GUN_OFFSET_SCALE_WITH_DRAGON = BUILDER
+            .comment("Scale the floating gun's positional offsets (left/right, forward/back, height) with the dragon's size.")
+            .translation("ds_tacz_compat.configuration.gunOffsetScaleWithDragon")
+            .define("gunOffsetScaleWithDragon", true);
+
     public static final ModConfigSpec.DoubleValue GUN_OFFSET_X = BUILDER
             .comment("Left/right offset of the floating gun, in blocks. Positive = right.")
             .translation("ds_tacz_compat.configuration.gunOffsetX")

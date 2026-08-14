@@ -105,10 +105,12 @@ public abstract class DragonItemRenderLayerMixin {
             double floatPeriodMs = 1000.0 / floatSpeed;
             floatAnim = (float) Math.sin((System.currentTimeMillis() % floatPeriodMs) / floatPeriodMs * Math.PI * 2) * 0.06f;
         }
-        float height = animatable.getBbHeight() * animatable.getScale() + Config.GUN_HEIGHT_OFFSET.get().floatValue() + floatAnim;
+        float dragonScale = animatable.getScale();
+        float offsetScale = Config.GUN_OFFSET_SCALE_WITH_DRAGON.get() ? dragonScale : 1.0f;
+        float height = animatable.getBbHeight() * dragonScale + Config.GUN_HEIGHT_OFFSET.get().floatValue() * offsetScale + floatAnim;
         GunRenderData.setHeadGunY(player.getUUID(), height);
-        float offsetX = Config.GUN_OFFSET_X.get().floatValue();
-        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue();
+        float offsetX = Config.GUN_OFFSET_X.get().floatValue() * offsetScale;
+        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue() * offsetScale;
 
         // Level 1: body-aligned coordinate system for position offsets
         float bodyYaw = (float) MovementData.getData(player).bodyYaw;
@@ -148,7 +150,9 @@ public abstract class DragonItemRenderLayerMixin {
         // Level 2: camera-oriented rendering
         poseStack.mulPose(Axis.YP.rotationDegrees(180 - state.yaw + bodyYaw));
         poseStack.mulPose(Axis.XP.rotationDegrees(-state.pitch));
-        poseStack.scale(0.8f, 0.8f, 0.8f);
+        float baseScale = Config.GUN_BASE_SCALE.get().floatValue();
+        float gunScale = Config.GUN_SCALE_WITH_DRAGON.get() ? animatable.getScale() : 1.0f;
+        poseStack.scale(baseScale * gunScale, baseScale * gunScale, baseScale * gunScale);
 
         // Miniguns have [90,0,0] on their thirdperson_hand bone; pre-cancel it
         IGun iGun = (IGun) stack.getItem();
