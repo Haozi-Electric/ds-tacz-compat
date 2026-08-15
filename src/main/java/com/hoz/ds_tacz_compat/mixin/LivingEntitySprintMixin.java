@@ -2,6 +2,7 @@ package com.hoz.ds_tacz_compat.mixin;
 
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider;
 import by.dragonsurvivalteam.dragonsurvival.server.handlers.ServerFlightHandler;
+import com.hoz.ds_tacz_compat.ServerConfig;
 import com.tacz.guns.entity.shooter.LivingEntitySprint;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,6 +24,9 @@ public abstract class LivingEntitySprintMixin {
     // dragon, keep the raw sprint flag so aim doesn't kick it out of flight.
     @Inject(method = "getProcessedSprintStatus", at = @At("HEAD"), cancellable = true, remap = false)
     private void ds_tacz_compat$keepGlideSprint(boolean sprint, CallbackInfoReturnable<Boolean> cir) {
+        if (!ServerConfig.isGlidingShootingEnabled()) {
+            return;
+        }
         if (shooter instanceof Player player
                 && DragonStateProvider.isDragon(player)
                 && ServerFlightHandler.isGliding(player)) {

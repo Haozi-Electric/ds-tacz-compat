@@ -2,6 +2,8 @@
   "ds_tacz_compat.configuration.title": "TACZ DS Compat 配置",
   "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml": "TACZ DS Compat 配置",
   "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml.title": "TACZ DS Compat 配置",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.server.toml": "TACZ DS Compat 服务端配置",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.server.toml.title": "TACZ DS Compat 服务端配置",
 
   "ds_tacz_compat.configuration.hideFirstPersonArms": "隐藏第一人称手臂",
   "ds_tacz_compat.configuration.hideFirstPersonArms.tooltip": "开启后，龙玩家持TACZ枪械时将不渲染第一人称手臂。",
@@ -28,5 +30,11 @@
   "ds_tacz_compat.configuration.tracerVisible": "龙玩家曳光弹可见性",
   "ds_tacz_compat.configuration.tracerVisible.tooltip": "显示龙玩家的子弹曳光轨迹。",
   "ds_tacz_compat.configuration.hideRemoteTracer": "隐藏远程龙玩家曳光弹",
-  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "隐藏其他龙玩家的子弹曳光弹，与原版TACZ行为一致。"
+  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "隐藏其他龙玩家的子弹曳光弹，与原版TACZ行为一致。",
+
+  "ds_tacz_compat.configuration.glidingShooting": "滑翔开枪",
+  "ds_tacz_compat.configuration.glidingShooting.tooltip": "允许龙在滑翔时开枪。关闭后，瞄准或换弹会像原版TACZ一样退出滑翔。",
+
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier": "移速影响倍数",
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "龙玩家受TACZ移速影响的倍数。0取消影响，1保持原版，2为两倍。"
 }

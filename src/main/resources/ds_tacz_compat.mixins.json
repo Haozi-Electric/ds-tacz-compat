@@ -6,7 +6,8 @@
   "refmap": "ds_tacz_compat.refmap.json",
   "mixins": [
     "LivingEntitySprintMixin",
-    "LivingEntityAimMixin"
+    "LivingEntityAimMixin",
+    "LivingEntitySpeedModifierMixin"
   ],
   "client": [
     "LevelRendererMixin",

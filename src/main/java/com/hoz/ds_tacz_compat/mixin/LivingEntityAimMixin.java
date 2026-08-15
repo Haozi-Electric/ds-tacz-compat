@@ -2,6 +2,7 @@ package com.hoz.ds_tacz_compat.mixin;
 
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider;
 import by.dragonsurvivalteam.dragonsurvival.server.handlers.ServerFlightHandler;
+import com.hoz.ds_tacz_compat.ServerConfig;
 import com.tacz.guns.entity.shooter.LivingEntityAim;
 import com.tacz.guns.entity.shooter.ShooterDataHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,7 +27,8 @@ public abstract class LivingEntityAimMixin {
     private ShooterDataHolder data;
 
     private boolean ds_tacz_compat$isGlidingDragon() {
-        return shooter instanceof Player player
+        return ServerConfig.isGlidingShootingEnabled()
+                && shooter instanceof Player player
                 && DragonStateProvider.isDragon(player)
                 && ServerFlightHandler.isGliding(player);
     }

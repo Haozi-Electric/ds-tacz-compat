@@ -2,6 +2,8 @@
   "ds_tacz_compat.configuration.title": "TACZ DS Compat Config",
   "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml": "TACZ DS Compat Config",
   "ds_tacz_compat.configuration.section.ds_tacz_compat.common.toml.title": "TACZ DS Compat Config",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.server.toml": "TACZ DS Compat Server Config",
+  "ds_tacz_compat.configuration.section.ds_tacz_compat.server.toml.title": "TACZ DS Compat Server Config",
 
   "ds_tacz_compat.configuration.hideFirstPersonArms": "Hide First-Person Arms",
   "ds_tacz_compat.configuration.hideFirstPersonArms.tooltip": "When enabled, dragon arms will not render in first-person while holding TACZ guns.",
@@ -28,5 +30,11 @@
   "ds_tacz_compat.configuration.tracerVisible": "Dragon Player Tracer Visibility",
   "ds_tacz_compat.configuration.tracerVisible.tooltip": "Show bullet tracers for dragon players.",
   "ds_tacz_compat.configuration.hideRemoteTracer": "Hide Remote Dragon Tracers",
-  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "Hide bullet tracers from other dragon players, matching original TACZ behavior."
+  "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "Hide bullet tracers from other dragon players, matching original TACZ behavior.",
+
+  "ds_tacz_compat.configuration.glidingShooting": "Gliding Shooting",
+  "ds_tacz_compat.configuration.glidingShooting.tooltip": "Allow dragons to shoot while gliding. When disabled, aiming or reloading exits flight.",
+
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier": "Speed Influence Multiplier",
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "Multiplier for TACZ's movement-speed influence on dragons. 0 cancels it, 1 keeps vanilla, 2 doubles it."
 }
