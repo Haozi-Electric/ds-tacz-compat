@@ -11,7 +11,7 @@ public final class ServerConfig {
             .define("glidingShooting", true);
 
     public static final ModConfigSpec.DoubleValue SPEED_INFLUENCE_MULTIPLIER = BUILDER
-            .comment("Multiplier applied to TACZ's movement-speed influence on dragons. 0 cancels it, 1 keeps vanilla, 2 doubles it.")
+            .comment("Multiplier applied to TACZ's movement-speed influence on dragons. Defaults to 1; set to 0 to disable the TACZ speed penalty.")
             .translation("ds_tacz_compat.configuration.speedInfluenceMultiplier")
             .defineInRange("speedInfluenceMultiplier", 1.0, 0.0, 3.0);
 

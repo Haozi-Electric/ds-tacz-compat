@@ -32,9 +32,52 @@
   "ds_tacz_compat.configuration.hideRemoteTracer": "Hide Remote Dragon Tracers",
   "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "Hide bullet tracers from other dragon players, matching original TACZ behavior.",
 
+  "ds_tacz_compat.configuration.forceShowCrosshair": "Force Show Crosshair",
+  "ds_tacz_compat.configuration.forceShowCrosshair.tooltip": "Force the TACZ crosshair to show in third person.",
+
+  "ds_tacz_compat.configuration.adsFeatureEnabled": "ADS Crosshair & Dragon Fade",
+  "ds_tacz_compat.configuration.adsFeatureEnabled.tooltip": "While a dragon aims in third person, show the TACZ crosshair and fade the dragon model so the head doesn't block it.",
+
+  "ds_tacz_compat.configuration.adsFadeAmount": "ADS Dragon Fade",
+  "ds_tacz_compat.configuration.adsFadeAmount.tooltip": "How much the dragon model fades while aiming in third person. 0 = opaque, 1 = fully transparent.",
+
   "ds_tacz_compat.configuration.glidingShooting": "Gliding Shooting",
   "ds_tacz_compat.configuration.glidingShooting.tooltip": "Allow dragons to shoot while gliding. When disabled, aiming or reloading exits flight.",
 
   "ds_tacz_compat.configuration.speedInfluenceMultiplier": "Speed Influence Multiplier",
-  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "Multiplier for TACZ's movement-speed influence on dragons. 0 cancels it, 1 keeps vanilla, 2 doubles it."
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "Multiplier for TACZ's movement-speed influence on dragons. Defaults to 1; set to 0 to disable the TACZ speed penalty.",
+
+  "ds_tacz_compat.configuration.recoilCancelEnabled": "No-Recoil Enabled",
+  "ds_tacz_compat.configuration.recoilCancelEnabled.tooltip": "Master switch for the no-recoil feature for dragon players.",
+
+  "ds_tacz_compat.configuration.recoilCancelScope": "No-Recoil Active Scope",
+  "ds_tacz_compat.configuration.recoilCancelScope.tooltip": "Controls the active scope of no-recoil for dragon players. The three options are: active while gliding, active while flying, always active. WARNING: the latter two may break game fairness.",
+  "ds_tacz_compat.configuration.recoilCancelScope.GLIDING": "Gliding",
+  "ds_tacz_compat.configuration.recoilCancelScope.FLYING": "Flying",
+  "ds_tacz_compat.configuration.recoilCancelScope.ALWAYS": "Always",
+
+  "ds_tacz_compat.configuration.backGunEnabled": "Back Gun",
+  "ds_tacz_compat.configuration.backGunEnabled.tooltip": "Render hotbar guns on the dragon's back, anchored to the torso bone.",
+  "ds_tacz_compat.configuration.backGunScale": "Back Gun Scale",
+  "ds_tacz_compat.configuration.backGunScale.tooltip": "Uniform scale of the back gun.",
+
+  "key.categories.ds_tacz_compat": "DS TACZ Compat",
+  "key.ds_tacz_compat.open_config": "Open DS TACZ Compat Config",
+
+  "ds_tacz_compat.configuration.disabledGunModels": "Disabled Gun Models",
+  "ds_tacz_compat.configuration.disabledGunModels.tooltip": "Dragon model resource locations (namespace:path) where the floating gun is disabled. Add extension dragon models here if they break rendering.",
+  "ds_tacz_compat.configuration.disabledBackGunModels": "Disabled Back Gun Models",
+  "ds_tacz_compat.configuration.disabledBackGunModels.tooltip": "Dragon model resource locations (namespace:path) where the back gun is disabled. Add extension dragon models here if they break rendering.",
+
+  "ds_tacz_compat.config.category.floatingGun": "Floating Gun",
+  "ds_tacz_compat.config.category.firstPerson": "First Person",
+  "ds_tacz_compat.config.category.tracer": "Tracers",
+  "ds_tacz_compat.config.category.crosshair": "Crosshair & Dragon Fade",
+  "ds_tacz_compat.config.category.recoil": "Recoil",
+  "ds_tacz_compat.config.category.backGun": "Back Gun",
+  "ds_tacz_compat.config.category.blacklist": "Dragon Model Blacklist",
+  "ds_tacz_compat.config.category.server": "Server Config",
+
+  "ds_tacz_compat.cloth_config_warning": "Cloth Config API is not installed, so the mod config screen cannot be opened.\nPlease install Cloth Config and try again.",
+  "ds_tacz_compat.cloth_config_download": "Download Cloth Config"
 }

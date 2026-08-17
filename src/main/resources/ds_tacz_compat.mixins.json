@@ -14,9 +14,13 @@
     "RenderHelperMixin",
     "DragonItemRenderLayerMixin",
     "DragonRendererMixin",
+    "DragonModelMixin",
     "EntityBulletRendererMixin",
     "LocalPlayerSprintMixin",
-    "AnimationStateMachineMixin"
+    "AnimationStateMachineMixin",
+    "CameraSetupEventMixin",
+    "RenderCrosshairEventMixin",
+    "GunDisplayInstanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

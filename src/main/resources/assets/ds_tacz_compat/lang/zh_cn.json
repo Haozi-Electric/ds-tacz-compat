@@ -32,9 +32,52 @@
   "ds_tacz_compat.configuration.hideRemoteTracer": "隐藏远程龙玩家曳光弹",
   "ds_tacz_compat.configuration.hideRemoteTracer.tooltip": "隐藏其他龙玩家的子弹曳光弹，与原版TACZ行为一致。",
 
+  "ds_tacz_compat.configuration.forceShowCrosshair": "第三人称显示准星",
+  "ds_tacz_compat.configuration.forceShowCrosshair.tooltip": "在第三人称下强制显示TACZ准星。",
+
+  "ds_tacz_compat.configuration.adsFeatureEnabled": "第三人称开镜准星与龙模型虚化",
+  "ds_tacz_compat.configuration.adsFeatureEnabled.tooltip": "使龙玩家在第三人称开镜时显示TACZ准星并虚化龙模型，防止龙头挡住准星。",
+
+  "ds_tacz_compat.configuration.adsFadeAmount": "龙模型虚化程度",
+  "ds_tacz_compat.configuration.adsFadeAmount.tooltip": "龙玩家第三人称开镜时龙模型的虚化程度。0为完全不透明，1为完全透明。",
+
   "ds_tacz_compat.configuration.glidingShooting": "滑翔开枪",
   "ds_tacz_compat.configuration.glidingShooting.tooltip": "允许龙在滑翔时开枪。关闭后，瞄准或换弹会像原版TACZ一样退出滑翔。",
 
   "ds_tacz_compat.configuration.speedInfluenceMultiplier": "移速影响倍数",
-  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "龙玩家受TACZ移速影响的倍数。0取消影响，1保持原版，2为两倍。"
+  "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "龙玩家受TACZ移速影响的倍数。默认为1，设置为0以取消TACZ减速惩罚。",
+
+  "ds_tacz_compat.configuration.recoilCancelEnabled": "无后坐力开关",
+  "ds_tacz_compat.configuration.recoilCancelEnabled.tooltip": "无后座力功能的总开关，控制龙玩家是否启用无后座力。",
+
+  "ds_tacz_compat.configuration.recoilCancelScope": "无后坐力生效范围",
+  "ds_tacz_compat.configuration.recoilCancelScope.tooltip": "控制龙玩家无后坐力的生效范围。三个选项分别是滑翔时生效，飞行时生效，总是生效。警告：后两者可能破坏游戏公平性。",
+  "ds_tacz_compat.configuration.recoilCancelScope.GLIDING": "滑翔时",
+  "ds_tacz_compat.configuration.recoilCancelScope.FLYING": "飞行时",
+  "ds_tacz_compat.configuration.recoilCancelScope.ALWAYS": "总是",
+
+  "ds_tacz_compat.configuration.backGunEnabled": "背枪渲染",
+  "ds_tacz_compat.configuration.backGunEnabled.tooltip": "将物品栏中的枪械渲染在龙背上，锚定在躯干骨骼。",
+  "ds_tacz_compat.configuration.backGunScale": "背枪缩放",
+  "ds_tacz_compat.configuration.backGunScale.tooltip": "背枪的统一缩放倍数。",
+
+  "key.categories.ds_tacz_compat": "DS TACZ Compat",
+  "key.ds_tacz_compat.open_config": "打开 DS TACZ Compat 配置",
+
+  "ds_tacz_compat.configuration.disabledGunModels": "禁用悬浮枪的龙模型",
+  "ds_tacz_compat.configuration.disabledGunModels.tooltip": "在这些龙模型（命名空间:路径）上禁用悬浮枪渲染。扩展龙 mod 的模型若导致渲染问题，可将其加入此处。",
+  "ds_tacz_compat.configuration.disabledBackGunModels": "禁用背枪的龙模型",
+  "ds_tacz_compat.configuration.disabledBackGunModels.tooltip": "在这些龙模型（命名空间:路径）上禁用背枪渲染。扩展龙 mod 的模型若导致渲染问题，可将其加入此处。",
+
+  "ds_tacz_compat.config.category.floatingGun": "悬浮枪",
+  "ds_tacz_compat.config.category.firstPerson": "第一人称",
+  "ds_tacz_compat.config.category.tracer": "曳光弹",
+  "ds_tacz_compat.config.category.crosshair": "准星与龙虚化",
+  "ds_tacz_compat.config.category.recoil": "后坐力",
+  "ds_tacz_compat.config.category.backGun": "背枪",
+  "ds_tacz_compat.config.category.blacklist": "龙模型黑名单",
+  "ds_tacz_compat.config.category.server": "服务端配置",
+
+  "ds_tacz_compat.cloth_config_warning": "未安装 Cloth Config API，无法打开本模组配置界面。\n请安装 Cloth Config 后重试。",
+  "ds_tacz_compat.cloth_config_download": "下载 Cloth Config"
 }

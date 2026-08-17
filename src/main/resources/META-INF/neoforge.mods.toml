@@ -43,3 +43,10 @@ config="ds_tacz_compat.mixins.json"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.ds_tacz_compat]]
+    modId="cloth_config"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="CLIENT"

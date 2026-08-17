@@ -59,6 +59,11 @@ public abstract class DragonItemRenderLayerMixin {
             return;
         }
 
+        if (GunRenderData.isDragonModelDisabled(player)) {
+            ci.cancel();
+            return;
+        }
+
         if (BetterCombat.isAttacking(player)) {
             ci.cancel();
             return;

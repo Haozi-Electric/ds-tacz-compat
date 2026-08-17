@@ -2,6 +2,8 @@ package com.hoz.ds_tacz_compat;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
+import java.util.List;
+
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
@@ -23,7 +25,7 @@ public class Config {
     public static final ModConfigSpec.DoubleValue GUN_FLOAT_SPEED = BUILDER
             .comment("Vertical bobbing speed of the floating gun, in full float cycles per second. 0 = no bobbing. Higher = faster.")
             .translation("ds_tacz_compat.configuration.gunFloatSpeed")
-            .defineInRange("gunFloatSpeed", 1.0, 0.0, 5.0);
+            .defineInRange("gunFloatSpeed", 0.5, 0.0, 5.0);
 
     public static final ModConfigSpec.DoubleValue GUN_BASE_SCALE = BUILDER
             .comment("Base scale of the floating gun. 1.0 matches the item's original size.")
@@ -41,7 +43,7 @@ public class Config {
             .define("gunOffsetScaleWithDragon", true);
 
     public static final ModConfigSpec.DoubleValue GUN_OFFSET_X = BUILDER
-            .comment("Left/right offset of the floating gun, in blocks. Positive = right.")
+            .comment("Left/right offset of the floating gun, in blocks. Positive = left.")
             .translation("ds_tacz_compat.configuration.gunOffsetX")
             .defineInRange("gunOffsetX", 0.0, -5.0, 5.0);
 
@@ -70,5 +72,54 @@ public class Config {
             .translation("ds_tacz_compat.configuration.hideRemoteTracer")
             .define("hideRemoteTracer", true);
 
+    public static final ModConfigSpec.BooleanValue FORCE_SHOW_CROSSHAIR = BUILDER
+            .comment("Force the TACZ crosshair to show in third person.")
+            .translation("ds_tacz_compat.configuration.forceShowCrosshair")
+            .define("forceShowCrosshair", true);
+
+    public static final ModConfigSpec.BooleanValue ADS_FEATURE_ENABLED = BUILDER
+            .comment("When a dragon aims (right-click) in third person, show the TACZ crosshair and fade the dragon model so the head doesn't block it.")
+            .translation("ds_tacz_compat.configuration.adsFeatureEnabled")
+            .define("adsFeatureEnabled", true);
+
+    public static final ModConfigSpec.DoubleValue ADS_FADE_AMOUNT = BUILDER
+            .comment("How much the dragon model fades while aiming in third person. 0 = opaque, 1 = fully transparent.")
+            .translation("ds_tacz_compat.configuration.adsFadeAmount")
+            .defineInRange("adsFadeAmount", 0.8, 0.0, 1.0);
+
+    public static final ModConfigSpec.BooleanValue RECOIL_CANCEL_ENABLED = BUILDER
+            .comment("Master switch for the no-recoil feature for dragon players.")
+            .translation("ds_tacz_compat.configuration.recoilCancelEnabled")
+            .define("recoilCancelEnabled", true);
+
+    public static final ModConfigSpec.EnumValue<RecoilCancelScope> RECOIL_CANCEL_SCOPE = BUILDER
+            .comment("Cancel camera recoil for dragon players. GLIDING = while gliding, FLYING = in any flight mode, ALWAYS = always. WARNING: FLYING and ALWAYS may break game fairness.")
+            .translation("ds_tacz_compat.configuration.recoilCancelScope")
+            .defineEnum("recoilCancelScope", RecoilCancelScope.GLIDING);
+
+    public static final ModConfigSpec.BooleanValue BACK_GUN_ENABLED = BUILDER
+            .comment("Render hotbar guns on the dragon's back, anchored to the torso bone.")
+            .translation("ds_tacz_compat.configuration.backGunEnabled")
+            .define("backGunEnabled", true);
+
+    public static final ModConfigSpec.DoubleValue BACK_GUN_SCALE = BUILDER
+            .comment("Back gun uniform scale.")
+            .translation("ds_tacz_compat.configuration.backGunScale")
+            .defineInRange("backGunScale", 0.5, 0.1, 5.0);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED_GUN_MODELS = BUILDER
+            .comment("Dragon model resource locations (namespace:path) for which the floating gun is disabled. Add extension dragon models here if they break rendering.")
+            .translation("ds_tacz_compat.configuration.disabledGunModels")
+            .defineList("disabledGunModels", List.<String>of("dragonsurvival:dihuang_loong"), obj -> obj instanceof String);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED_BACK_GUN_MODELS = BUILDER
+            .comment("Dragon model resource locations (namespace:path) for which the back gun is disabled. Add extension dragon models here if they break rendering.")
+            .translation("ds_tacz_compat.configuration.disabledBackGunModels")
+            .defineList("disabledBackGunModels", List.<String>of("dragonsurvival:dihuang_loong"), obj -> obj instanceof String);
+
     static final ModConfigSpec SPEC = BUILDER.build();
+
+    public enum RecoilCancelScope {
+        GLIDING, FLYING, ALWAYS
+    }
 }
