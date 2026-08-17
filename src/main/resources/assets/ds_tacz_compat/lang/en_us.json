@@ -47,6 +47,12 @@
   "ds_tacz_compat.configuration.speedInfluenceMultiplier": "Speed Influence Multiplier",
   "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "Multiplier for TACZ's movement-speed influence on dragons. Defaults to 1; set to 0 to disable the TACZ speed penalty.",
 
+  "ds_tacz_compat.configuration.syncBackGunToClients": "Sync Back Gun to Clients",
+  "ds_tacz_compat.configuration.syncBackGunToClients.tooltip": "Sync dragon players' back-gun item to nearby clients so remote dragons show it.",
+
+  "ds_tacz_compat.configuration.syncRemoteGunEffects": "Sync Remote Gun Effects",
+  "ds_tacz_compat.configuration.syncRemoteGunEffects.tooltip": "Show muzzle flash and shell ejection for remote dragon players.",
+
   "ds_tacz_compat.configuration.recoilCancelEnabled": "No-Recoil Enabled",
   "ds_tacz_compat.configuration.recoilCancelEnabled.tooltip": "Master switch for the no-recoil feature for dragon players.",
 

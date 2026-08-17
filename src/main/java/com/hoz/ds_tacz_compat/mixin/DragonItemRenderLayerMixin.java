@@ -29,13 +29,16 @@ import java.lang.reflect.Field;
 public abstract class DragonItemRenderLayerMixin {
 
     private static final Field MUZZLE_FLASH_START_MARK;
+    private static final Field SHOOT_TIME_STAMP;
 
     static {
         try {
             MUZZLE_FLASH_START_MARK = MuzzleFlashRender.class.getDeclaredField("muzzleFlashStartMark");
             MUZZLE_FLASH_START_MARK.setAccessible(true);
+            SHOOT_TIME_STAMP = MuzzleFlashRender.class.getDeclaredField("shootTimeStamp");
+            SHOOT_TIME_STAMP.setAccessible(true);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to access MuzzleFlashRender.muzzleFlashStartMark", e);
+            throw new RuntimeException("Failed to access MuzzleFlashRender fields", e);
         }
     }
 
@@ -169,12 +172,15 @@ public abstract class DragonItemRenderLayerMixin {
 
         try {
             MUZZLE_FLASH_START_MARK.setBoolean(null, true);
+            // Per-player isolation: only the dragon that just fired gets a muzzle flash.
+            SHOOT_TIME_STAMP.setLong(null, GunRenderData.shootTime(player.getUUID()));
         } catch (IllegalAccessException ignored) {
         }
 
-        boolean isSelf = (player == mc.player);
-        MuzzleFlashRender.isSelf = isSelf;
-        ShellRender.isSelf = isSelf;
+        MuzzleFlashRender.isSelf = true;
+        // Shells live in a per-gun-model queue shared across players; only render them for
+        // the dragon that recently ejected one, so two players with the same gun don't cross.
+        ShellRender.isSelf = GunRenderData.hasRecentShell(player.getUUID());
 
         mc.getItemRenderer().renderStatic(
                 player, stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, false,

@@ -23,7 +23,7 @@ public class Config {
     public static final ModConfigSpec.DoubleValue GUN_FLOAT_SPEED = BUILDER
             .comment("Vertical bobbing speed of the floating gun, in full float cycles per second. 0 = no bobbing. Higher = faster.")
             .translation("ds_tacz_compat.configuration.gunFloatSpeed")
-            .defineInRange("gunFloatSpeed", 0.5, 0.0, 5.0);
+            .defineInRange("gunFloatSpeed", 0.3, 0.0, 5.0);
 
     public static final ModConfigSpec.DoubleValue GUN_BASE_SCALE = BUILDER
             .comment("Base scale of the floating gun. 1.0 matches the item's original size.")
@@ -104,6 +104,11 @@ public class Config {
             .comment("Back gun uniform scale.")
             .translation("ds_tacz_compat.configuration.backGunScale")
             .defineInRange("backGunScale", 0.5, 0.1, 5.0);
+
+    public static final ModConfigSpec.BooleanValue SYNC_REMOTE_GUN_EFFECTS = BUILDER
+            .comment("Show muzzle flash and shell ejection for remote dragon players.")
+            .translation("ds_tacz_compat.configuration.syncRemoteGunEffects")
+            .define("syncRemoteGunEffects", true);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 

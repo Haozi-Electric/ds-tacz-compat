@@ -36,7 +36,7 @@ public final class DragonModelConfig {
     public static class BackGunConfig {
         public boolean enabled = true;
         public float posX = 0.0f;
-        public float posY = 0.3f;
+        public float posY = 0.36f;
         public float posZ = 0.33f;
         public float rotX = 90.0f;
         public float rotY = 120.0f;

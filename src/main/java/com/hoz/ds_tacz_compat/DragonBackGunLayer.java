@@ -10,7 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -61,16 +60,11 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
             return;
         }
 
-        Inventory inventory = player.getInventory();
-        for (int i = 0; i < 9; i++) {
-            if (i == inventory.selected) {
-                continue;
-            }
-            ItemStack stack = inventory.getItem(i);
-            if (stack.getItem() instanceof IGun) {
-                renderBackGun(poseStack, bone, backConfig, stack, animatable, bufferSource, packedLight, packedOverlay);
-                break;
-            }
+        ItemStack stack = player == mc.player
+                ? BackGunSync.findBackGunItem(player)
+                : BackGunSync.clientBackGun(player.getId());
+        if (stack.getItem() instanceof IGun) {
+            renderBackGun(poseStack, bone, backConfig, stack, animatable, bufferSource, packedLight, packedOverlay);
         }
     }
 

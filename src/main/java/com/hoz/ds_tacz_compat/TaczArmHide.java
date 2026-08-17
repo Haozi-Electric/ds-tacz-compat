@@ -1,6 +1,8 @@
 package com.hoz.ds_tacz_compat;
 
 import com.mojang.logging.LogUtils;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -21,13 +23,19 @@ public class TaczArmHide {
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
         DragonModelConfig.load();
         if (FMLEnvironment.dist.isClient()) {
-            if (ModList.get().isLoaded("cloth_config")) {
-                modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> ClothConfigScreen.create(screen));
-            } else {
-                modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> new ClothConfigWarningScreen(screen));
-            }
-            modEventBus.addListener(KeyBinds::registerKeyBindings);
-            NeoForge.EVENT_BUS.addListener(KeyBinds::onClientTick);
+            registerClient(modContainer, modEventBus);
         }
+    }
+
+    // Kept in a client-only method so the dedicated server never loads Screen / Cloth classes.
+    @OnlyIn(Dist.CLIENT)
+    private static void registerClient(ModContainer modContainer, IEventBus modEventBus) {
+        if (ModList.get().isLoaded("cloth_config")) {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> ClothConfigScreen.create(screen));
+        } else {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> new ClothConfigWarningScreen(screen));
+        }
+        modEventBus.addListener(KeyBinds::registerKeyBindings);
+        NeoForge.EVENT_BUS.addListener(KeyBinds::onClientTick);
     }
 }

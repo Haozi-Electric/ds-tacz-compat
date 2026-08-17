@@ -15,6 +15,11 @@ public final class ServerConfig {
             .translation("ds_tacz_compat.configuration.speedInfluenceMultiplier")
             .defineInRange("speedInfluenceMultiplier", 1.0, 0.0, 3.0);
 
+    public static final ModConfigSpec.BooleanValue SYNC_BACK_GUN_TO_CLIENTS = BUILDER
+            .comment("Sync dragon players' back-gun item to nearby clients so remote dragons show it.")
+            .translation("ds_tacz_compat.configuration.syncBackGunToClients")
+            .define("syncBackGunToClients", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private ServerConfig() {}
@@ -27,5 +32,9 @@ public final class ServerConfig {
 
     public static double speedInfluenceMultiplier() {
         return SPEC.isLoaded() ? SPEED_INFLUENCE_MULTIPLIER.get() : 1.0;
+    }
+
+    public static boolean isSyncBackGunToClients() {
+        return !SPEC.isLoaded() || SYNC_BACK_GUN_TO_CLIENTS.get();
     }
 }

@@ -47,6 +47,12 @@
   "ds_tacz_compat.configuration.speedInfluenceMultiplier": "移速影响倍数",
   "ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip": "龙玩家受TACZ移速影响的倍数。默认为1，设置为0以取消TACZ减速惩罚。",
 
+  "ds_tacz_compat.configuration.syncBackGunToClients": "同步远程背枪",
+  "ds_tacz_compat.configuration.syncBackGunToClients.tooltip": "将龙玩家的背枪物品同步给附近客户端，使远程龙玩家也显示背枪。",
+
+  "ds_tacz_compat.configuration.syncRemoteGunEffects": "同步远程枪口焰与抛壳",
+  "ds_tacz_compat.configuration.syncRemoteGunEffects.tooltip": "为远程龙玩家显示枪口焰和抛壳效果。",
+
   "ds_tacz_compat.configuration.recoilCancelEnabled": "无后坐力开关",
   "ds_tacz_compat.configuration.recoilCancelEnabled.tooltip": "无后座力功能的总开关，控制龙玩家是否启用无后座力。",
 
@@ -70,7 +76,7 @@
   "ds_tacz_compat.config.category.crosshair": "准星与龙虚化",
   "ds_tacz_compat.config.category.recoil": "后坐力",
   "ds_tacz_compat.config.category.backGun": "背枪",
-  "ds_tacz_compat.config.category.dragonModels": "龙模型",
+  "ds_tacz_compat.config.category.dragonModels": "龙模型独立配置项",
   "ds_tacz_compat.config.category.server": "服务端配置",
   "ds_tacz_compat.config.dragon_models.no_world": "进入世界后才能配置各龙模型的选项。",
   "ds_tacz_compat.config.dragon_models.enableFloating": "启用悬浮枪",

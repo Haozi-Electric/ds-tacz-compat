@@ -21,6 +21,8 @@ public final class GunRenderData {
 
     private static final Map<UUID, Float> headGunYMap = new HashMap<>();
     private static final Map<UUID, SmoothState> smoothMap = new HashMap<>();
+    private static final Map<UUID, Long> shootTimes = new HashMap<>();
+    private static final Map<UUID, Long> shellTimes = new HashMap<>();
 
     private GunRenderData() {}
 
@@ -29,6 +31,15 @@ public final class GunRenderData {
 
     public static SmoothState smoothState(UUID id) {
         return smoothMap.computeIfAbsent(id, k -> new SmoothState());
+    }
+
+    public static void recordShoot(UUID id) { shootTimes.put(id, System.currentTimeMillis()); }
+    public static long shootTime(UUID id) { return shootTimes.getOrDefault(id, -1L); }
+
+    public static void recordShell(UUID id) { shellTimes.put(id, System.currentTimeMillis()); }
+    public static boolean hasRecentShell(UUID id) {
+        Long t = shellTimes.get(id);
+        return t != null && (System.currentTimeMillis() - t) < 3000L;
     }
 
     public static class SmoothState {

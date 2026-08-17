@@ -58,7 +58,7 @@ public final class ClothConfigScreen {
                 .setTooltip(Component.translatable("ds_tacz_compat.configuration.gunHeightOffset.tooltip"))
                 .setSaveConsumer(Config.GUN_HEIGHT_OFFSET::set).build());
         cat.addEntry(eb.startDoubleField(Component.translatable("ds_tacz_compat.configuration.gunFloatSpeed"), Config.GUN_FLOAT_SPEED.get())
-                .setMin(0).setMax(5).setDefaultValue(0.5)
+                .setMin(0).setMax(5).setDefaultValue(0.3)
                 .setTooltip(Component.translatable("ds_tacz_compat.configuration.gunFloatSpeed.tooltip"))
                 .setSaveConsumer(Config.GUN_FLOAT_SPEED::set).build());
         cat.addEntry(eb.startDoubleField(Component.translatable("ds_tacz_compat.configuration.gunBaseScale"), Config.GUN_BASE_SCALE.get())
@@ -89,6 +89,10 @@ public final class ClothConfigScreen {
                 .setMin(0).setMax(90).setDefaultValue(60.0)
                 .setTooltip(Component.translatable("ds_tacz_compat.configuration.gunPitchClamp.tooltip"))
                 .setSaveConsumer(Config.GUN_PITCH_CLAMP::set).build());
+        cat.addEntry(eb.startBooleanToggle(Component.translatable("ds_tacz_compat.configuration.syncRemoteGunEffects"), Config.SYNC_REMOTE_GUN_EFFECTS.get())
+                .setDefaultValue(true)
+                .setTooltip(Component.translatable("ds_tacz_compat.configuration.syncRemoteGunEffects.tooltip"))
+                .setSaveConsumer(Config.SYNC_REMOTE_GUN_EFFECTS::set).build());
     }
 
     private static void addFirstPerson(ConfigBuilder root, ConfigEntryBuilder eb) {
@@ -192,7 +196,7 @@ public final class ClothConfigScreen {
                 .setDefaultValue(true)
                 .setSaveConsumer(v -> config.backGun.enabled = v).build());
         sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posX", config.backGun.posX, 0.0f, -500, 500, v -> config.backGun.posX = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posY", config.backGun.posY, 0.3f, -500, 500, v -> config.backGun.posY = v / 100.0f));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posY", config.backGun.posY, 0.36f, -500, 500, v -> config.backGun.posY = v / 100.0f));
         sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posZ", config.backGun.posZ, 0.33f, -500, 500, v -> config.backGun.posZ = v / 100.0f));
         sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotX", config.backGun.rotX, 90.0f, -18000, 18000, v -> config.backGun.rotX = v / 100.0f));
         sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotY", config.backGun.rotY, 120.0f, -18000, 18000, v -> config.backGun.rotY = v / 100.0f));
@@ -243,5 +247,9 @@ public final class ClothConfigScreen {
                 .setMin(0).setMax(3).setDefaultValue(1.0)
                 .setTooltip(Component.translatable("ds_tacz_compat.configuration.speedInfluenceMultiplier.tooltip"))
                 .setSaveConsumer(ServerConfig.SPEED_INFLUENCE_MULTIPLIER::set).build());
+        cat.addEntry(eb.startBooleanToggle(Component.translatable("ds_tacz_compat.configuration.syncBackGunToClients"), ServerConfig.isSyncBackGunToClients())
+                .setDefaultValue(true)
+                .setTooltip(Component.translatable("ds_tacz_compat.configuration.syncBackGunToClients.tooltip"))
+                .setSaveConsumer(ServerConfig.SYNC_BACK_GUN_TO_CLIENTS::set).build());
     }
 }
