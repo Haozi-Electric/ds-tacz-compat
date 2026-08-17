@@ -19,6 +19,7 @@ public class TaczArmHide {
     public TaczArmHide(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
+        DragonModelConfig.load();
         if (FMLEnvironment.dist.isClient()) {
             if (ModList.get().isLoaded("cloth_config")) {
                 modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> ClothConfigScreen.create(screen));

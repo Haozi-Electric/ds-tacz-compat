@@ -1,0 +1,306 @@
+{
+  "dragonsurvival:dragon_model": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:annihilator_type_a_model": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:dragonborn": {
+    "floatingGun": {
+      "enabled": false,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:neo_crystcursed_dragon": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.27,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:mega_typhus_male": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 2.5,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.36,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:claw_monster": {
+    "floatingGun": {
+      "enabled": false,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:realistic_spider": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:test_model": {
+    "floatingGun": {
+      "enabled": false,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:dseda_ender_dragon_model": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:night_striker_female": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.45,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 110.47,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:night_striker": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.45,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 110.47,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:dihuang_loong": {
+    "floatingGun": {
+      "enabled": false,
+      "offsetX": 0.0,
+      "offsetY": 1.0,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:bee_queen_model": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 2.8,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:mega_typhus_female": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": 2.5,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": true,
+      "posX": 0.0,
+      "posY": 0.36,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:cute_spider": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": -0.35,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  },
+  "dragonsurvival:griffin": {
+    "floatingGun": {
+      "enabled": true,
+      "offsetX": 0.0,
+      "offsetY": -0.27,
+      "offsetZ": 0.0,
+      "scale": 0.8
+    },
+    "backGun": {
+      "enabled": false,
+      "posX": 0.0,
+      "posY": 0.3,
+      "posZ": 0.33,
+      "rotX": 90.0,
+      "rotY": 120.0,
+      "rotZ": 0.0,
+      "scale": 0.5
+    }
+  }
+}

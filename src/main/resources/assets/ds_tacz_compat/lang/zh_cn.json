@@ -64,20 +64,34 @@
   "key.categories.ds_tacz_compat": "DS TACZ Compat",
   "key.ds_tacz_compat.open_config": "打开 DS TACZ Compat 配置",
 
-  "ds_tacz_compat.configuration.disabledGunModels": "禁用悬浮枪的龙模型",
-  "ds_tacz_compat.configuration.disabledGunModels.tooltip": "在这些龙模型（命名空间:路径）上禁用悬浮枪渲染。扩展龙 mod 的模型若导致渲染问题，可将其加入此处。",
-  "ds_tacz_compat.configuration.disabledBackGunModels": "禁用背枪的龙模型",
-  "ds_tacz_compat.configuration.disabledBackGunModels.tooltip": "在这些龙模型（命名空间:路径）上禁用背枪渲染。扩展龙 mod 的模型若导致渲染问题，可将其加入此处。",
-
   "ds_tacz_compat.config.category.floatingGun": "悬浮枪",
   "ds_tacz_compat.config.category.firstPerson": "第一人称",
   "ds_tacz_compat.config.category.tracer": "曳光弹",
   "ds_tacz_compat.config.category.crosshair": "准星与龙虚化",
   "ds_tacz_compat.config.category.recoil": "后坐力",
   "ds_tacz_compat.config.category.backGun": "背枪",
-  "ds_tacz_compat.config.category.blacklist": "龙模型黑名单",
+  "ds_tacz_compat.config.category.dragonModels": "龙模型",
   "ds_tacz_compat.config.category.server": "服务端配置",
+  "ds_tacz_compat.config.dragon_models.no_world": "进入世界后才能配置各龙模型的选项。",
+  "ds_tacz_compat.config.dragon_models.enableFloating": "启用悬浮枪",
+  "ds_tacz_compat.config.dragon_models.offsetX": "悬浮枪 X 偏移",
+  "ds_tacz_compat.config.dragon_models.offsetY": "悬浮枪 Y 偏移",
+  "ds_tacz_compat.config.dragon_models.offsetZ": "悬浮枪 Z 偏移",
+  "ds_tacz_compat.config.dragon_models.scale": "悬浮枪缩放",
+  "ds_tacz_compat.config.dragon_models.enableBack": "启用背枪",
+  "ds_tacz_compat.config.dragon_models.posX": "背枪 X 位置",
+  "ds_tacz_compat.config.dragon_models.posY": "背枪 Y 位置",
+  "ds_tacz_compat.config.dragon_models.posZ": "背枪 Z 位置",
+  "ds_tacz_compat.config.dragon_models.rotX": "背枪 X 旋转",
+  "ds_tacz_compat.config.dragon_models.rotY": "背枪 Y 旋转",
+  "ds_tacz_compat.config.dragon_models.rotZ": "背枪 Z 旋转",
+  "ds_tacz_compat.config.dragon_models.backScale": "背枪缩放",
 
   "ds_tacz_compat.cloth_config_warning": "未安装 Cloth Config API，无法打开本模组配置界面。\n请安装 Cloth Config 后重试。",
-  "ds_tacz_compat.cloth_config_download": "下载 Cloth Config"
+  "ds_tacz_compat.cloth_config_download": "下载 Cloth Config",
+
+  "ds_tacz_compat.config.category.modelTool": "龙模型配置工具",
+  "ds_tacz_compat.config.model_tool.apply": "应用全局初始值到龙模型",
+  "ds_tacz_compat.config.model_tool.apply_title": "确认操作",
+  "ds_tacz_compat.config.model_tool.apply_warning": "此操作将使用当前悬浮枪与背枪的全局初始值（偏移、缩放），覆盖所有龙模型对应的配置。是否继续？"
 }

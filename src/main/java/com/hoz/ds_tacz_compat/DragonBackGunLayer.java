@@ -25,14 +25,6 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
  */
 public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
 
-    // Calibrated back-gun pose on the Torso bone (position in blocks, rotation in degrees).
-    private static final float OFFSET_X = 0.0f;
-    private static final float OFFSET_Y = 0.3f;
-    private static final float OFFSET_Z = 0.33f;
-    private static final float ROT_X = 90.0f;
-    private static final float ROT_Y = 120.0f;
-    private static final float ROT_Z = 0.0f;
-
     public DragonBackGunLayer(GeoRenderer<DragonEntity> renderer) {
         super(renderer);
     }
@@ -55,7 +47,8 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
         if (player == null) {
             return;
         }
-        if (GunRenderData.isBackGunModelDisabled(player)) {
+        DragonModelConfig.BackGunConfig backConfig = DragonModelConfig.backGunFor(player);
+        if (!backConfig.enabled) {
             return;
         }
         Minecraft mc = Minecraft.getInstance();
@@ -69,12 +62,15 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
         }
 
         Inventory inventory = player.getInventory();
-        if (inventory.selected == 0) {
-            return;
-        }
-        ItemStack stack = inventory.getItem(0);
-        if (stack.getItem() instanceof IGun) {
-            renderBackGun(poseStack, bone, stack, animatable, bufferSource, packedLight, packedOverlay);
+        for (int i = 0; i < 9; i++) {
+            if (i == inventory.selected) {
+                continue;
+            }
+            ItemStack stack = inventory.getItem(i);
+            if (stack.getItem() instanceof IGun) {
+                renderBackGun(poseStack, bone, backConfig, stack, animatable, bufferSource, packedLight, packedOverlay);
+                break;
+            }
         }
     }
 
@@ -88,19 +84,20 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
                 && IGunOperator.fromLivingEntity(player).getSynIsAiming();
     }
 
-    private void renderBackGun(PoseStack poseStack, GeoBone bone, ItemStack stack, DragonEntity animatable,
+    private void renderBackGun(PoseStack poseStack, GeoBone bone, DragonModelConfig.BackGunConfig backConfig,
+                               ItemStack stack, DragonEntity animatable,
                                MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         poseStack.pushPose();
         // renderForBone leaves the origin at the parent's pivot, so translate to the Torso
         // pivot first (see DragonSurvival's DragonBackpackRenderLayer), then apply the pose.
         poseStack.translate(
-                bone.getPivotX() / 16f + OFFSET_X,
-                bone.getPivotY() / 16f + OFFSET_Y,
-                bone.getPivotZ() / 16f + OFFSET_Z);
-        poseStack.mulPose(Axis.ZP.rotationDegrees(ROT_Z));
-        poseStack.mulPose(Axis.YP.rotationDegrees(ROT_Y));
-        poseStack.mulPose(Axis.XP.rotationDegrees(ROT_X));
-        float scale = Config.BACK_GUN_SCALE.get().floatValue();
+                bone.getPivotX() / 16f + backConfig.posX,
+                bone.getPivotY() / 16f + backConfig.posY,
+                bone.getPivotZ() / 16f + backConfig.posZ);
+        poseStack.mulPose(Axis.ZP.rotationDegrees(backConfig.rotZ));
+        poseStack.mulPose(Axis.YP.rotationDegrees(backConfig.rotY));
+        poseStack.mulPose(Axis.XP.rotationDegrees(backConfig.rotX));
+        float scale = backConfig.scale;
         poseStack.scale(scale, scale, scale);
 
         Minecraft.getInstance().getItemRenderer().renderStatic(

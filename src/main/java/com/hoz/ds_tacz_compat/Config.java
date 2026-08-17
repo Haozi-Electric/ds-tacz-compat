@@ -2,8 +2,6 @@ package com.hoz.ds_tacz_compat;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.List;
-
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
@@ -106,16 +104,6 @@ public class Config {
             .comment("Back gun uniform scale.")
             .translation("ds_tacz_compat.configuration.backGunScale")
             .defineInRange("backGunScale", 0.5, 0.1, 5.0);
-
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED_GUN_MODELS = BUILDER
-            .comment("Dragon model resource locations (namespace:path) for which the floating gun is disabled. Add extension dragon models here if they break rendering.")
-            .translation("ds_tacz_compat.configuration.disabledGunModels")
-            .defineList("disabledGunModels", List.<String>of("dragonsurvival:dihuang_loong"), obj -> obj instanceof String);
-
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED_BACK_GUN_MODELS = BUILDER
-            .comment("Dragon model resource locations (namespace:path) for which the back gun is disabled. Add extension dragon models here if they break rendering.")
-            .translation("ds_tacz_compat.configuration.disabledBackGunModels")
-            .defineList("disabledBackGunModels", List.<String>of("dragonsurvival:dihuang_loong"), obj -> obj instanceof String);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 

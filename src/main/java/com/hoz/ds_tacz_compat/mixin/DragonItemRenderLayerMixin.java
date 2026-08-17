@@ -6,6 +6,7 @@ import by.dragonsurvivalteam.dragonsurvival.common.entity.DragonEntity;
 import by.dragonsurvivalteam.dragonsurvival.compat.bettercombat.BetterCombat;
 import by.dragonsurvivalteam.dragonsurvival.registry.attachments.MovementData;
 import com.hoz.ds_tacz_compat.Config;
+import com.hoz.ds_tacz_compat.DragonModelConfig;
 import com.hoz.ds_tacz_compat.GunRenderData;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -59,7 +60,8 @@ public abstract class DragonItemRenderLayerMixin {
             return;
         }
 
-        if (GunRenderData.isDragonModelDisabled(player)) {
+        DragonModelConfig.FloatingGunConfig gunConfig = DragonModelConfig.floatingGunFor(player);
+        if (!gunConfig.enabled) {
             ci.cancel();
             return;
         }
@@ -112,10 +114,10 @@ public abstract class DragonItemRenderLayerMixin {
         }
         float dragonScale = animatable.getScale();
         float offsetScale = Config.GUN_OFFSET_SCALE_WITH_DRAGON.get() ? dragonScale : 1.0f;
-        float height = animatable.getBbHeight() * dragonScale + Config.GUN_HEIGHT_OFFSET.get().floatValue() * offsetScale + floatAnim;
+        float height = animatable.getBbHeight() * dragonScale + gunConfig.offsetY * offsetScale + floatAnim;
         GunRenderData.setHeadGunY(player.getUUID(), height);
-        float offsetX = Config.GUN_OFFSET_X.get().floatValue() * offsetScale;
-        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue() * offsetScale;
+        float offsetX = gunConfig.offsetX * offsetScale;
+        float offsetZ = gunConfig.offsetZ * offsetScale;
 
         // Level 1: body-aligned coordinate system for position offsets
         float bodyYaw = (float) MovementData.getData(player).bodyYaw;
@@ -155,7 +157,7 @@ public abstract class DragonItemRenderLayerMixin {
         // Level 2: camera-oriented rendering
         poseStack.mulPose(Axis.YP.rotationDegrees(180 - state.yaw + bodyYaw));
         poseStack.mulPose(Axis.XP.rotationDegrees(-state.pitch));
-        float baseScale = Config.GUN_BASE_SCALE.get().floatValue();
+        float baseScale = gunConfig.scale;
         float gunScale = Config.GUN_SCALE_WITH_DRAGON.get() ? animatable.getScale() : 1.0f;
         poseStack.scale(baseScale * gunScale, baseScale * gunScale, baseScale * gunScale);
 
