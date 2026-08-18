@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="ds_tacz_compat"
-version="1.1.0"
+version="1.1.1"
 displayName="DS TACZ Compat"
 authors="Hz, Deepseek"
 logoFile="icon.png"
