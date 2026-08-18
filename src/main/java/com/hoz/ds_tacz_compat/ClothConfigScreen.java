@@ -31,13 +31,13 @@ public final class ClothConfigScreen {
         });
         ConfigEntryBuilder eb = root.entryBuilder();
 
+        addDragonModels(root, eb);
         addFloatingGun(root, eb);
         addFirstPerson(root, eb);
         addTracer(root, eb);
         addCrosshair(root, eb);
         addRecoil(root, eb);
         addBackGun(root, eb);
-        addDragonModels(root, eb);
         addModelTool(root, eb, parent);
         // The server config is only loaded once a world is joined; reading it before then throws.
         if (ServerConfig.SPEC.isLoaded()) {
@@ -187,33 +187,28 @@ public final class ClothConfigScreen {
         sub.add(eb.startBooleanToggle(Component.translatable("ds_tacz_compat.config.dragon_models.enableFloating"), config.floatingGun.enabled)
                 .setDefaultValue(true)
                 .setSaveConsumer(v -> config.floatingGun.enabled = v).build());
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetX", config.floatingGun.offsetX, 0.0f, -500, 500, v -> config.floatingGun.offsetX = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetY", config.floatingGun.offsetY, 1.0f, -200, 500, v -> config.floatingGun.offsetY = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetZ", config.floatingGun.offsetZ, 0.0f, -500, 500, v -> config.floatingGun.offsetZ = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.scale", config.floatingGun.scale, 0.8f, 10, 500, v -> config.floatingGun.scale = v / 100.0f));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetX", config.floatingGun.offsetX, 0.0, -5.0, 5.0, v -> config.floatingGun.offsetX = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetY", config.floatingGun.offsetY, 1.0, -2.0, 5.0, v -> config.floatingGun.offsetY = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.offsetZ", config.floatingGun.offsetZ, 0.0, -5.0, 5.0, v -> config.floatingGun.offsetZ = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.scale", config.floatingGun.scale, 0.8, 0.1, 5.0, v -> config.floatingGun.scale = v.floatValue()));
 
         sub.add(eb.startBooleanToggle(Component.translatable("ds_tacz_compat.config.dragon_models.enableBack"), config.backGun.enabled)
                 .setDefaultValue(true)
                 .setSaveConsumer(v -> config.backGun.enabled = v).build());
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posX", config.backGun.posX, 0.0f, -500, 500, v -> config.backGun.posX = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posY", config.backGun.posY, 0.36f, -500, 500, v -> config.backGun.posY = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posZ", config.backGun.posZ, 0.33f, -500, 500, v -> config.backGun.posZ = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotX", config.backGun.rotX, 90.0f, -18000, 18000, v -> config.backGun.rotX = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotY", config.backGun.rotY, 120.0f, -18000, 18000, v -> config.backGun.rotY = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotZ", config.backGun.rotZ, 0.0f, -18000, 18000, v -> config.backGun.rotZ = v / 100.0f));
-        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.backScale", config.backGun.scale, 0.5f, 10, 500, v -> config.backGun.scale = v / 100.0f));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posX", config.backGun.posX, 0.0, -5.0, 5.0, v -> config.backGun.posX = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posY", config.backGun.posY, 0.36, -5.0, 5.0, v -> config.backGun.posY = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.posZ", config.backGun.posZ, 0.33, -5.0, 5.0, v -> config.backGun.posZ = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotX", config.backGun.rotX, 90.0, -180.0, 180.0, v -> config.backGun.rotX = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotY", config.backGun.rotY, 120.0, -180.0, 180.0, v -> config.backGun.rotY = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.rotZ", config.backGun.rotZ, 0.0, -180.0, 180.0, v -> config.backGun.rotZ = v.floatValue()));
+        sub.add(doubleSlider(eb, "ds_tacz_compat.config.dragon_models.backScale", config.backGun.scale, 0.5, 0.1, 5.0, v -> config.backGun.scale = v.floatValue()));
 
         cat.addEntry(sub.build());
     }
 
-    // Cloth has no double slider, so store values ×100 and render them as decimals.
-    private static AbstractConfigListEntry<Integer> doubleSlider(ConfigEntryBuilder eb, String key, float value,
-                                                                 float def, int min100, int max100, Consumer<Integer> save) {
-        return eb.startIntSlider(Component.translatable(key), Math.round(value * 100), min100, max100)
-                .setDefaultValue(Math.round(def * 100))
-                .setTextGetter(v -> Component.literal(String.format("%.2f", v / 100.0)))
-                .setSaveConsumer(save)
-                .build();
+    private static AbstractConfigListEntry<?> doubleSlider(ConfigEntryBuilder eb, String key, double value,
+                                                           double def, double min, double max, Consumer<Double> save) {
+        return new DoubleSliderEntry(Component.translatable(key), value, min, max, def, save);
     }
 
     private static void addModelTool(ConfigBuilder root, ConfigEntryBuilder eb, Screen parent) {

@@ -3,6 +3,7 @@ package com.hoz.ds_tacz_compat.mixin;
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider;
 import by.dragonsurvivalteam.dragonsurvival.registry.attachments.MovementData;
 import com.hoz.ds_tacz_compat.Config;
+import com.hoz.ds_tacz_compat.DragonModelConfig;
 import com.hoz.ds_tacz_compat.GunRenderData;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.tacz.guns.client.renderer.entity.EntityBulletRenderer;
@@ -76,8 +77,9 @@ public class EntityBulletRendererMixin {
         if (Config.GUN_OFFSET_SCALE_WITH_DRAGON.get()) {
             offsetScale = (float) DragonStateProvider.getData(player).getVisualScale(player, partialTicks);
         }
-        float offsetX = Config.GUN_OFFSET_X.get().floatValue() * offsetScale;
-        float offsetZ = Config.GUN_OFFSET_Z.get().floatValue() * offsetScale;
+        DragonModelConfig.FloatingGunConfig gunConfig = DragonModelConfig.floatingGunFor(player);
+        float offsetX = gunConfig.offsetX * offsetScale;
+        float offsetZ = gunConfig.offsetZ * offsetScale;
         // YN(bodyYaw) maps body frame to camera space: R_Y(-bodyYaw)
         float cos = (float) Math.cos(yawRad);
         float sin = (float) Math.sin(yawRad);
