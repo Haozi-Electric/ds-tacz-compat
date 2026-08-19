@@ -8,6 +8,7 @@ import by.dragonsurvivalteam.dragonsurvival.registry.attachments.MovementData;
 import com.hoz.ds_tacz_compat.Config;
 import com.hoz.ds_tacz_compat.DragonModelConfig;
 import com.hoz.ds_tacz_compat.GunRenderData;
+import com.hoz.ds_tacz_compat.RefitAnimHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.tacz.guns.api.item.IGun;
@@ -85,6 +86,13 @@ public abstract class DragonItemRenderLayerMixin {
         }
 
         if (!bone.getName().equals("RightItem")) {
+            ci.cancel();
+            return;
+        }
+
+        // Only hide the local dragon's floating gun while it opens the refit screen; remote
+        // dragons don't get the screen-space gun and should keep theirs.
+        if (player == mc.player && RefitAnimHelper.isDragonRefitScreen()) {
             ci.cancel();
             return;
         }

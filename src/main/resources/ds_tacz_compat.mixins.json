@@ -20,7 +20,8 @@
     "AnimationStateMachineMixin",
     "CameraSetupEventMixin",
     "RenderCrosshairEventMixin",
-    "GunDisplayInstanceMixin"
+    "GunDisplayInstanceMixin",
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
