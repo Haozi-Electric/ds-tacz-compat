@@ -21,7 +21,8 @@
     "CameraSetupEventMixin",
     "RenderCrosshairEventMixin",
     "GunDisplayInstanceMixin",
-    "GameRendererMixin"
+    "GameRendererMixin",
+    "PaperDollRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -38,7 +38,7 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
         if (!Config.BACK_GUN_ENABLED.get()) {
             return;
         }
-        if (GunRenderData.worldRenderDepth <= 0) {
+        if (GunRenderData.worldRenderDepth <= 0 && GunRenderData.paperDollRenderDepth <= 0) {
             return;
         }
 
@@ -51,7 +51,9 @@ public class DragonBackGunLayer extends GeoRenderLayer<DragonEntity> {
             return;
         }
         Minecraft mc = Minecraft.getInstance();
-        if (player == mc.player && mc.options.getCameraType().isFirstPerson()) {
+        // During the paper doll we render as if in third person regardless of the real camera.
+        if (player == mc.player && mc.options.getCameraType().isFirstPerson()
+                && GunRenderData.paperDollRenderDepth <= 0) {
             return;
         }
         // While the dragon fades during ADS, a floating back gun would give the fade away;

@@ -38,9 +38,11 @@ public class DragonRendererMixin {
                                                     VertexConsumer buffer, boolean isReRender,
                                                     float partialTick, int packedLight, int packedOverlay,
                                                     int colour, CallbackInfo ci) {
-        if (GunRenderData.worldRenderDepth <= 0) {
+        if (GunRenderData.worldRenderDepth <= 0 && GunRenderData.paperDollRenderDepth <= 0) {
             return;
         }
+        // In the paper doll preRender still runs, so this is the paper doll's own root
+        // matrix; the floating gun anchors to it so it scales/rotates with the preview.
         GunRenderData.worldMatrix = new Matrix4f(poseStack.last().pose());
     }
 

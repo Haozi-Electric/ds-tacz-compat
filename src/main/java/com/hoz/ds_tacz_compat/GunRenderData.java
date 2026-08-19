@@ -19,6 +19,12 @@ public final class GunRenderData {
     // and polluting the shared state below.
     public static int worldRenderDepth;
 
+    // >0 while the Ayame PaperDoll (DS Compat fork) is rendering its HUD preview.
+    // One-way compat: only ever set by the @Pseudo PaperDollRendererMixin, so it stays
+    // 0 when that paper doll is not installed. Lets the gun renderers draw the
+    // floating/back gun in the paper doll like in third person.
+    public static int paperDollRenderDepth;
+
     private static final Map<UUID, Float> headGunYMap = new HashMap<>();
     private static final Map<UUID, SmoothState> smoothMap = new HashMap<>();
     private static final Map<UUID, Long> shootTimes = new HashMap<>();

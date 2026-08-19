@@ -53,7 +53,7 @@ public abstract class DragonItemRenderLayerMixin {
             return;
         }
 
-        if (GunRenderData.worldRenderDepth <= 0) {
+        if (GunRenderData.worldRenderDepth <= 0 && GunRenderData.paperDollRenderDepth <= 0) {
             ci.cancel();
             return;
         }
@@ -80,7 +80,9 @@ public abstract class DragonItemRenderLayerMixin {
         }
 
         Minecraft mc = Minecraft.getInstance();
-        if (player == mc.player && mc.options.getCameraType().isFirstPerson()) {
+        // During the paper doll we render as if in third person regardless of the real camera.
+        if (player == mc.player && mc.options.getCameraType().isFirstPerson()
+                && GunRenderData.paperDollRenderDepth <= 0) {
             ci.cancel();
             return;
         }
@@ -130,44 +132,59 @@ public abstract class DragonItemRenderLayerMixin {
         float offsetX = gunConfig.offsetX * offsetScale;
         float offsetZ = gunConfig.offsetZ * offsetScale;
 
-        // Level 1: body-aligned coordinate system for position offsets
-        float bodyYaw = (float) MovementData.getData(player).bodyYaw;
+        // Level 1: body-aligned coordinate system for position offsets.
+        // In the paper doll the fork's DS compat redirects the dragon body (yBodyRot is
+        // locked to the configured pose), so anchor the gun to that redirected body rather
+        // than the live MovementData, and face it as if the player looked straight ahead.
+        boolean inPaperDoll = GunRenderData.paperDollRenderDepth > 0;
+        float bodyYaw = inPaperDoll ? player.yBodyRot : (float) MovementData.getData(player).bodyYaw;
         poseStack.mulPose(Axis.YN.rotationDegrees(bodyYaw));
         poseStack.translate(offsetX, height, offsetZ);
 
-        // EMA smoothing: gun follows camera with a soft delay
-        float targetYaw = player.getViewYRot(partialTick);
-        float targetPitch = player.getViewXRot(partialTick);
-        float dt = mc.getTimer().getGameTimeDeltaTicks() / 20f;
-        float tau = Config.AIM_SMOOTHING.get().floatValue();
-        float alpha;
-        if (tau <= 0f) {
-            alpha = 1f;
+        float renderYaw;
+        float renderPitch;
+        if (inPaperDoll) {
+            // Static preview: snap to the locked body yaw / head pitch so the gun doesn't
+            // swing with the live view and stays consistent with the redirected body.
+            renderYaw = player.yBodyRot;
+            renderPitch = player.getXRot();
         } else {
-            alpha = 1f - (float) Math.exp(-dt / tau);
-        }
+            // EMA smoothing: gun follows camera with a soft delay
+            float targetYaw = player.getViewYRot(partialTick);
+            float targetPitch = player.getViewXRot(partialTick);
+            float dt = mc.getTimer().getGameTimeDeltaTicks() / 20f;
+            float tau = Config.AIM_SMOOTHING.get().floatValue();
+            float alpha;
+            if (tau <= 0f) {
+                alpha = 1f;
+            } else {
+                alpha = 1f - (float) Math.exp(-dt / tau);
+            }
 
-        GunRenderData.SmoothState state = GunRenderData.smoothState(player.getUUID());
-        if (!state.initialized) {
-            state.yaw = targetYaw;
-            state.pitch = targetPitch;
-            state.initialized = true;
-        } else {
-            float yawDiff = targetYaw - state.yaw;
-            if (yawDiff > 180) yawDiff -= 360;
-            if (yawDiff < -180) yawDiff += 360;
-            state.yaw += yawDiff * alpha;
-            state.pitch += (targetPitch - state.pitch) * alpha;
-        }
+            GunRenderData.SmoothState state = GunRenderData.smoothState(player.getUUID());
+            if (!state.initialized) {
+                state.yaw = targetYaw;
+                state.pitch = targetPitch;
+                state.initialized = true;
+            } else {
+                float yawDiff = targetYaw - state.yaw;
+                if (yawDiff > 180) yawDiff -= 360;
+                if (yawDiff < -180) yawDiff += 360;
+                state.yaw += yawDiff * alpha;
+                state.pitch += (targetPitch - state.pitch) * alpha;
+            }
 
-        float pitchClamp = Config.GUN_PITCH_CLAMP.get().floatValue();
-        if (state.pitch > pitchClamp) {
-            state.pitch = pitchClamp;
+            float pitchClamp = Config.GUN_PITCH_CLAMP.get().floatValue();
+            if (state.pitch > pitchClamp) {
+                state.pitch = pitchClamp;
+            }
+            renderYaw = state.yaw;
+            renderPitch = state.pitch;
         }
 
         // Level 2: camera-oriented rendering
-        poseStack.mulPose(Axis.YP.rotationDegrees(180 - state.yaw + bodyYaw));
-        poseStack.mulPose(Axis.XP.rotationDegrees(-state.pitch));
+        poseStack.mulPose(Axis.YP.rotationDegrees(180 - renderYaw + bodyYaw));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-renderPitch));
         float baseScale = gunConfig.scale;
         float gunScale = Config.GUN_SCALE_WITH_DRAGON.get() ? animatable.getScale() : 1.0f;
         poseStack.scale(baseScale * gunScale, baseScale * gunScale, baseScale * gunScale);
