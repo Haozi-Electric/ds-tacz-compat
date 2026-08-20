@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * A button that overwrites every dragon model's floating-gun / back-gun offsets and scales
- * with the current global client values, after an explicit confirmation.
+ * A button that wipes the whole per-model list and restores the tuned defaults shipped in the
+ * mod jar (default_dragon_models.json), after an explicit confirmation.
  */
-public class ApplyDefaultsEntry extends AbstractConfigListEntry<Boolean> {
+public class ResetDefaultsEntry extends AbstractConfigListEntry<Boolean> {
     private final Screen parent;
     private final Button button;
 
-    public ApplyDefaultsEntry(Component name, Screen parent) {
+    public ResetDefaultsEntry(Component name, Screen parent) {
         super(name, true);
         this.parent = parent;
         this.button = Button.builder(name, b -> openConfirm()).bounds(0, 0, 150, 20).build();
@@ -32,13 +32,13 @@ public class ApplyDefaultsEntry extends AbstractConfigListEntry<Boolean> {
         Minecraft mc = Minecraft.getInstance();
         mc.setScreen(new ConfirmScreen(confirmed -> {
             if (confirmed) {
-                ClothConfigScreen.applyGlobalDefaultsToAllModels();
+                ClothConfigScreen.resetDragonModelsToDefaultList();
                 mc.setScreen(ClothConfigScreen.create(parent));
             } else {
                 mc.setScreen(parent);
             }
-        }, Component.translatable("ds_tacz_compat.config.model_tool.apply_title"),
-           Component.translatable("ds_tacz_compat.config.model_tool.apply_warning").withColor(0xFFFF5555)));
+        }, Component.translatable("ds_tacz_compat.config.model_tool.reset_list_title"),
+           Component.translatable("ds_tacz_compat.config.model_tool.reset_list_warning").withColor(0xFFFF5555)));
     }
 
     @Override

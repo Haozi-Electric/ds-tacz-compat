@@ -99,5 +99,8 @@
   "ds_tacz_compat.config.category.modelTool": "Dragon Model Tools",
   "ds_tacz_compat.config.model_tool.apply": "Apply Global Defaults to Dragon Models",
   "ds_tacz_compat.config.model_tool.apply_title": "Confirm Action",
-  "ds_tacz_compat.config.model_tool.apply_warning": "This will overwrite every dragon model's floating gun and back gun offsets and scale with the current global defaults. Continue?"
+  "ds_tacz_compat.config.model_tool.apply_warning": "This will overwrite every dragon model's floating gun and back gun offsets and scale with the current global defaults. All your per-model adjustments will be lost. Continue?",
+  "ds_tacz_compat.config.model_tool.reset_list": "Reset Dragon Models to Initial Values",
+  "ds_tacz_compat.config.model_tool.reset_list_title": "Confirm Action",
+  "ds_tacz_compat.config.model_tool.reset_list_warning": "This will wipe the entire per-model list and restore the mod's built-in initial list. All your per-model adjustments will be lost. Continue?"
 }

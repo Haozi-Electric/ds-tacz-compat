@@ -218,6 +218,7 @@ public final class ClothConfigScreen {
             return;
         }
         cat.addEntry(new ApplyDefaultsEntry(Component.translatable("ds_tacz_compat.config.model_tool.apply"), parent));
+        cat.addEntry(new ResetDefaultsEntry(Component.translatable("ds_tacz_compat.config.model_tool.reset_list"), parent));
     }
 
     public static void applyGlobalDefaultsToAllModels() {
@@ -230,6 +231,10 @@ public final class ClothConfigScreen {
             config.backGun.scale = Config.BACK_GUN_SCALE.get().floatValue();
         }
         DragonModelConfig.save();
+    }
+
+    public static void resetDragonModelsToDefaultList() {
+        DragonModelConfig.resetToDefaultList();
     }
 
     private static void addServer(ConfigBuilder root, ConfigEntryBuilder eb) {

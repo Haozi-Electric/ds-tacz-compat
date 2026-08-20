@@ -94,10 +94,13 @@
   "ds_tacz_compat.config.dragon_models.backScale": "背枪缩放",
 
   "ds_tacz_compat.cloth_config_warning": "未安装 Cloth Config API，无法打开本模组配置界面。\n请安装 Cloth Config 后重试。",
-  "ds_tacz_compat.cloth_config_download": "下载 Cloth Config",
+  "ds_tacz_compat.cloth_config_download": "下载 Cloth Config API 以配置",
 
   "ds_tacz_compat.config.category.modelTool": "龙模型配置工具",
   "ds_tacz_compat.config.model_tool.apply": "应用全局初始值到龙模型",
   "ds_tacz_compat.config.model_tool.apply_title": "确认操作",
-  "ds_tacz_compat.config.model_tool.apply_warning": "此操作将使用当前悬浮枪与背枪的全局初始值（偏移、缩放），覆盖所有龙模型对应的配置。是否继续？"
+  "ds_tacz_compat.config.model_tool.apply_warning": "此操作将使用当前悬浮枪与背枪的全局初始值（偏移、缩放），覆盖所有龙模型对应的配置。你所有的龙模型独立调整都会丢失。是否继续？",
+  "ds_tacz_compat.config.model_tool.reset_list": "重置龙模型配置为初始数值",
+  "ds_tacz_compat.config.model_tool.reset_list_title": "确认操作",
+  "ds_tacz_compat.config.model_tool.reset_list_warning": "此操作将清空整个龙模型配置列表，恢复为模组内置的初始列表。你所有的龙模型独立调整都会丢失。是否继续？"
 }

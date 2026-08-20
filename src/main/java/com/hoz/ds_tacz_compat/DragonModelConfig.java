@@ -89,6 +89,24 @@ public final class DragonModelConfig {
         }
     }
 
+    // Replaces the whole per-model list with the tuned defaults shipped in the mod jar
+    // (default_dragon_models.json), then persists it.
+    public static void resetToDefaultList() {
+        try (InputStream in = DragonModelConfig.class.getResourceAsStream("/default_dragon_models.json")) {
+            if (in == null) {
+                return;
+            }
+            Map<String, ModelConfig> defaults = GSON.fromJson(new String(in.readAllBytes()),
+                    new TypeToken<Map<String, ModelConfig>>() {}.getType());
+            if (defaults != null) {
+                CONFIGS = defaults;
+                save();
+            }
+        } catch (IOException e) {
+            TaczArmHide.LOGGER.error("Failed to reset dragon model config to default list", e);
+        }
+    }
+
     public static ResourceLocation modelOf(Player player) {
         return DragonStateProvider.getData(player).body().value().model();
     }
